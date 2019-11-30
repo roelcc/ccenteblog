@@ -19,6 +19,7 @@ class CreateServicesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('short_name')->nullable();
+            $table->string('slug', 128);
 
             // SEO questions
             $table->text('question_1')->nullable();

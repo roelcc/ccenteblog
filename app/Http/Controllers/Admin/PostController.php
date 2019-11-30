@@ -141,7 +141,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id)->delete();
-        $this->authorize('pass', $post);
+//        $this->authorize('pass', $post);
 
         return back()->with('info', 'Eliminado correctamente');
     }

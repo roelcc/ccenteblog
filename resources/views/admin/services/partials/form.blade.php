@@ -1,4 +1,4 @@
-{{--{{ Form::hidden('user_id', auth()->user()->id) }}--}}
+{{ Form::hidden('user_id', auth()->user()->id) }}
 
 {{--<div class="form-group">--}}
 	{{--{{ Form::label('category_id', 'Categorías') }}--}}
@@ -29,16 +29,7 @@
 		{{ Form::radio('status', 'DRAFT') }} Borrador
 	</label>
 </div>
-{{--<div class="form-group">--}}
-	{{--{{ Form::label('tags', 'Etiquetas') }}--}}
-	{{--<div>--}}
-	{{--@foreach($tags as $tag)--}}
-		{{--<label>--}}
-			{{--{{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->name }}--}}
-		{{--</label>--}}
-	{{--@endforeach--}}
-	{{--</div>--}}
-{{--</div>--}}
+
 <div class="form-group">
     {{ Form::label('question_1', 'question_1') }}
     {{ Form::textarea('question_1', null, ['class' => 'form-control', 'rows' => '2']) }}

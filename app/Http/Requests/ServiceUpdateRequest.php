@@ -13,7 +13,7 @@ class ServiceUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,19 @@ class ServiceUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'name'          => 'required',
+            'slug'          => 'required|unique:services,slug,' . $this->service,
+            'user_id'       => 'required|integer',
+            'short_name'   => 'required',
+
+            'question_1'          => 'required',
+            'status'        => 'required|in:DRAFT,PUBLISHED',
         ];
+
+        if($this->get('image'))
+            $rules = array_merge($rules, ['image'         => 'mimes:jpg,jpeg,png']);
+
+        return $rules;
     }
 }

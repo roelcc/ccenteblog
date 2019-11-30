@@ -37,7 +37,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $service = Service::all();
+//        $service = Service::all();
         return view('admin.services.create', compact('service'));
     }
 
@@ -50,8 +50,10 @@ class ServiceController extends Controller
     public function store(ServiceStoreRequest $request)
     {
 
+
+
         $service = Service::create($request->all());
-        $this->authorize('pass', $service);
+//        $this->authorize('pass', $service);
 
         //IMAGE
         if($request->file('image')){
@@ -59,10 +61,10 @@ class ServiceController extends Controller
             $service->fill(['file' => asset($path)])->save();
         }
 
-        //TAGS
-//        $post->tags()->attach($request->get('tags'));
+//        TAGS
+//        $service->tags()->attach($request->get('tags'));
 
-        return redirect()->route('services.edit', $service->id)->with('info', 'Entrada creada con éxito');
+        return redirect()->route('services.edit', $service->id)->with('info', 'Servicio creada con éxito');
     }
 
     /**
@@ -87,8 +89,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-//        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
-//        $tags       = Tag::orderBy('name', 'ASC')->get();
+
         $service       = Service::find($id);
         $this->authorize('pass', $service);
 
@@ -116,7 +117,7 @@ class ServiceController extends Controller
         }
 
         //TAGS
-//        $post->tags()->sync($request->get('tags'));
+        $service->tags()->sync($request->get('tags'));
 
         return redirect()->route('services.edit', $service->id)->with('info', 'Entrada actualizada con éxito');
     }
@@ -131,7 +132,7 @@ class ServiceController extends Controller
     {
         //
         $service = Service::find($id)->delete();
-        $this->authorize('pass', $service);
+//        $this->authorize('pass', $service);
 
         return back()->with('info', 'Eliminado correctamente');
     }
