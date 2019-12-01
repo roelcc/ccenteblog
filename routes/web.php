@@ -18,6 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/blog', 'Web\PageController@blog')->name('blog');
+Route::get('/nosotros', 'Web\AboutUsController@index')->name('abouts');
+Route::get('/abouts', 'Admin\AboutUsController@index');
+Route::post('/abouts', 'Admin\AboutUsController@store');
 Route::get('/servicios', 'Web\ServiceController@services')->name('services');
 
 //articles
@@ -34,3 +37,4 @@ Route::resource('tags', 		'Admin\TagController');
 Route::resource('categories', 	'Admin\CategoryController');
 Route::resource('posts', 		'Admin\PostController');
 Route::resource('services', 	'Admin\ServiceController');
+Route::resource('aboutUs', 	'Admin\AboutUsController');

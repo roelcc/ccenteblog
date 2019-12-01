@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+
+//    protected $table = 'about_uses';
+
     protected $fillable = [
         'user_id', 'slug', 'name', 'short_name', 'question_1', 'question_2', 'question_3', 'question_4', 'question_5', 'status', 'file'
     ];

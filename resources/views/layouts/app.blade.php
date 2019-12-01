@@ -50,6 +50,7 @@
                             <li><a href="{{ route('categories.index') }}">Categorías</a></li>
                             <li><a href="{{ route('posts.index') }}">Artìculos</a></li>
                                 <li><a href="{{ route('services.index') }}">Servicios</a></li>
+                                <li><a href="{{ route('aboutUs.index') }}">Nosotros</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -13,18 +13,25 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function service()
+    public function services()
     {
         $services = Service::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
 
         return view('web.services', compact('services'));
     }
 
-    public function services($slug){
+//    public function servicels($slug){
+//        $service = Service::where('slug', $slug)->first();
+//
+//        return view('web.service', compact('service'));
+//    }
+
+    public function service($slug){
         $service = Service::where('slug', $slug)->first();
 
         return view('web.service', compact('service'));
     }
+
 
 
 }

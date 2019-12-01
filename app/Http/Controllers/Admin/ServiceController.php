@@ -117,7 +117,7 @@ class ServiceController extends Controller
         }
 
         //TAGS
-        $service->tags()->sync($request->get('tags'));
+//        $service->tags()->sync($request->get('tags'));
 
         return redirect()->route('services.edit', $service->id)->with('info', 'Entrada actualizada con éxito');
     }

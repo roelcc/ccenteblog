@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreatePeoplesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,39 +13,37 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('peoples', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('user_id')->unsigned();
-            $table->integer('category_id')->unsigned();
-
-            $table->string('name', 128);
-            $table->string('slug', 128)->unique();
-
-            $table->mediumText('excerpt')->nullable();
-            $table->text('idea')->nullable();
-            $table->text('idea_development')->nullable();
-            $table->text('bottom_line')->nullable();
-
-            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
-
+            $table->string('title');
+            $table->string('sub_title_1')->nullable();
+            $table->string('sub_title_2')->nullable();
+            $table->string('slug', 128);
             $table->string('file', 128)->nullable();
+            $table->string('picture', 128)->nullable();
 
-            $table->timestamps();
 
+            // Questions about us
+            $table->text('question_0')->nullable();
+            $table->text('question_1')->nullable();
+            $table->text('question_2')->nullable();
+            $table->text('question_3')->nullable();
+            $table->text('question_4')->nullable();
+            $table->text('question_5')->nullable();
+            $table->text('question_6')->nullable();
             //metadata
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('keywords')->nullable();
-            
+
             //relation
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('category_id')->references('id')->on('categories')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -56,6 +54,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('peoples');
     }
 }
